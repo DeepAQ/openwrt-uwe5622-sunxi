@@ -1,0 +1,15 @@
+diff --git a/drivers/net/wireless/uwe5622/tty-sdio/tty.c b/drivers/net/wireless/uwe5622/tty-sdio/tty.c
+index 6498272fc192..36fc7dd558d4 100644
+--- a/drivers/net/wireless/uwe5622/tty-sdio/tty.c
++++ b/drivers/net/wireless/uwe5622/tty-sdio/tty.c
+@@ -467,8 +467,8 @@ static  int sdio_data_transmit(uint8_t *data, size_t count)
+ 	return mtty_write(NULL, data, count);
+ }
+ 
+-static int mtty_write_plus(struct tty_struct *tty,
+-		  const unsigned char *buf, int count)
++static ssize_t mtty_write_plus(struct tty_struct *tty, const u8 *buf,
++			     size_t count)
+ {
+ 	return sitm_write(buf, count, sdio_data_transmit);
+ }
